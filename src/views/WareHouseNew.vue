@@ -53,6 +53,7 @@
           }
 
           this.msg = 'Cadastrado com sucesso!';
+          this.form = {}
 
         } catch (error) {
           this.msg = 'Ops, tente novamente!';

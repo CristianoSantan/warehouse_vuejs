@@ -2,28 +2,24 @@
   <div>
     <h1>Galpões Cadastrados</h1>
 
-    <input class="form" type="text" placeholder="Buscar Galpão" v-model="term">
-
-    <div v-for="w in filterWareHouse" :key="w.code">
-      <WareHouse
-        :id="w.id"
-        :name="w.name"
-        :code="w.code"
-        :city="w.city"
-        :address="w.address"
-        :area="w.area"
-      />
-    </div>
+    <v-text-field label="Buscar Galpão" v-model="term" class="my-5"></v-text-field>
+    <v-card dark>
+      <v-card-text>
+        <WareHouseTable :warehouses="filterWareHouse"/>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
 <script>
   import WareHouse from '@/components/WareHouse.vue';
+  import WareHouseTable from '@/components/WareHouseTable.vue';
 
   export default {
     name: 'WareHouseList',
     components: {
-      WareHouse
+      WareHouse,
+      WareHouseTable
     },
     data(){
       return{
