@@ -2,39 +2,17 @@
   <div>
     <h1>Cadastrar Galpão</h1>
     <div class="container">
-      <div>{{ msg }}</div>
+      <v-alert v-if="msg != null" type="info">{{ msg }}</v-alert>
       <form v-on:submit.prevent>
-        <div class="form">
-          <label for="code">Nome: </label>
-          <input type="text" v-model="form.code" id="" placeholder="Código">
-        </div>
-        <div class="form">
-          <label for="name">Nome: </label>
-          <input type="text" v-model="form.name" id="" placeholder="Nome do galpão">
-        </div>
-        <div class="form">
-          <label for="address">Endereço: </label>
-          <input type="text" v-model="form.address" id="" placeholder="Endereço">
-        </div>
-        <div class="form">
-          <label for="city">Cidade: </label>
-          <input type="text" v-model="form.city" id="" placeholder="Cidade">
-        </div>
-        <div class="form">
-          <label for="cep">CEP: </label>
-          <input type="text" v-model="form.cep" id="" placeholder="Cep">
-        </div>
-        <div class="form">
-          <label for="area">Área m²: </label>
-          <input type="number" v-model="form.area">
-        </div>
-        <div class="form">
-          <label for="description">Descrição: </label>
-          <textarea cols="30" rows="5" v-model="form.description"></textarea>
-        </div>
-        <div class="form">
-          <button v-on:click="postWareHouse">Cadastrar</button>
-        </div>
+        <v-text-field label="Código"     v-model="form.code"></v-text-field>
+        <v-text-field label="Nome"       v-model="form.name"></v-text-field>
+        <v-text-field label="Endereço"   v-model="form.address"></v-text-field>
+        <v-text-field label="Cidade"     v-model="form.city"></v-text-field>
+        <v-text-field label="Cep"        v-model="form.cep"></v-text-field>
+        <v-text-field label="Área em m²" v-model="form.area"></v-text-field>
+        <v-textarea   label="Descrição"  v-model="form.description"></v-textarea>
+        
+        <v-btn color="primary"           v-on:click="postWareHouse">Cadastrar</v-btn>
       </form>
     </div>
   </div>
