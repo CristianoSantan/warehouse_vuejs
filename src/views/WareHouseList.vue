@@ -6,7 +6,19 @@
 
 <script>
   export default {
-    name: 'WareHouseList'
+    name: 'WareHouseList',
+
+    async mounted() {
+      this.getWareHouses();
+    },
+
+    methods: {
+      async getWareHouses(){
+        const response = await fetch('http://localhost:3000/api/v1/warehouses', { method: 'GET' });
+        const result = await response.json();
+        console.log(result);
+      }
+    }
   }
 </script>
 
