@@ -2,7 +2,9 @@
   <div>
     <h1>Galpões Cadastrados</h1>
 
-    <div v-for="w in warehouses" :key="w.code">
+    <input class="form" type="text" placeholder="Buscar Galpão" v-model="term">
+
+    <div v-for="w in filterWareHouse" :key="w.code">
       <WareHouse
         :id="w.id"
         :name="w.name"
@@ -25,7 +27,8 @@
     },
     data(){
       return{
-        warehouses: []
+        warehouses: [],
+        term: ''
       }
     },
 
@@ -37,10 +40,17 @@
       async getWareHouses(){
         const response = await fetch('http://localhost:3000/api/v1/warehouses', { method: 'GET' });
         const result = await response.json();
-        console.log(result);
 
         this.warehouses = result;
         return this.warehouses;
+      }
+    },
+    
+    computed: {
+      filterWareHouse() {
+        return this.warehouses.filter(warehouse => {
+          return warehouse.name.toLowerCase().includes(this.term.toLowerCase())
+        })
       }
     }
   }
